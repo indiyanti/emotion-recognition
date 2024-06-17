@@ -21,7 +21,7 @@ def main():
 
 @st.cache(show_spinner=False)
 def get_file_content_as_string(path):
-    url = 'https://raw.githubusercontent.com/chiluveri-sanjay/Emotion-recognition/main/' + path
+    url = 'https://raw.githubusercontent.com/indiyanti/emotion-recognition/main/' + path
     response = urllib.request.urlopen(url)
     return response.read().decode("utf-8")
     
@@ -53,7 +53,7 @@ def extract_mfcc(wav_file_name):
     
     
 def predict(model,wav_filepath):
-    emotions={1 : 'neutral', 2 : 'calm', 3 : 'happy', 4 : 'sad', 5 : 'angry', 6 : 'fearful', 7 : 'disgust', 8 : 'surprised'}
+    emotions={"Neutral", "Calm", "Happy", "Sad", "Angry", "Fearful", "Disgust", "Surprised"}
     test_point=extract_mfcc(wav_filepath)
     test_point=np.reshape(test_point,newshape=(1,40,1))
     predictions=model.predict(test_point)
